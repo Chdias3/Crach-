@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+}
+
+html,
+body {
+  --black: hsl(240, 6%, 13%);
+  --grey: hsl(240, 9%, 89%);
+
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased; /* para funcionar apenas nos navegadores que contem webkit (são o chrome, safari etc...). A font fica um pouco mais suave*/
+}
+
+body {
+  display: grid;
+  place-items: center;
+}
+
+/* aqui vai centralizar os elementos e nao deixar que se repitam. O cover vai cobrir todo o fundo  */
+main {
+  background: url(img/background.svg) no-repeat center/cover;
+  /* width: 375px; */
+  /* height: 812px; */
+  min-height: 812px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  max-width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: var(--grey);
+}
+
+.avatar {
+  width: 10rem;
+  margin: 11.5rem auto 0;
+  position: relative;
+}
+
+.avatar span {
+  position: absolute; /*permite que se crie niveis de empilhamento, como um em baixo e outro em cima*/
+  top: -15px;
+  z-index: 1; /* o selo foi para traz quando coloquei o poligono, então coloco z-index para ficar na frente da imagem */
+}
+
+/* > img - fazendo isso estou expecificando que quero pegar a primeira imagem, segundo a ordem do html */
+.avatar > img {
+  width: 10rem;
+  height: 11.5rem;
+  object-fit: cover; /*para a imagem se adaptar ao tamanho que coloquei aqui*/
+
+  /* para fazer o poligono  */
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+a {
+  color: var(--grey);
+  text-decoration: none;
+  margin-top: 0.25rem;
+  display: flex;
+  gap: 0.75rem; /*espaço lateral do icone até o nome*/
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  margin-top: 2rem;
+}
+
+ul {
+  margin-top: 4rem;
+
+  list-style: none;
+  padding: 0;
+  display: flex; /*so consigo usar o gap e o justify com o flex e o grid*/
+  /* flex-direction: column;*/ /*para ficar no eixo vertical*/
+  gap: 0.5rem;
+  justify-content: center;
+  /* text-align: center; */ /*esse não serve aqui porque ele serve para textos e propriedades de textos. Alinha o elemento no eixo principal */
+}
+
+#socialLinks a {
+  transition: 0.3s; /*suavizar*/
+  display: inline-block; /* o link a é sempre display inline e não recebe o translate... então coloco inline block porque adiciona propriedade, assim mexe quando coloco o mause em cima*/
+}
+
+#socialLinks a:hover {
+  /*para quando passar o mause em cima*/
+  transform: translateY(-10px);
+}
